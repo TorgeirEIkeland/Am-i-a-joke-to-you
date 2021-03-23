@@ -1,2 +1,0 @@
-include ':app'
-rootProject.name = "Am i a joke to you"
