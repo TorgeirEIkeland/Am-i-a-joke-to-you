@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/am-i-a-joke-to-you.AmIAJoketoYouu.iml" filepath="$PROJECT_DIR$/.idea/modules/am-i-a-joke-to-you.AmIAJoketoYouu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/am-i-a-joke-to-you.AmIAJoketoYouu.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/am-i-a-joke-to-you.AmIAJoketoYouu.app.iml" />
-    </modules>
-  </component>
-</project>
