@@ -4,19 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text_home"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/EditText_searchInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Search..."
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategoryAny"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/EditText_searchInput"
+        app:layout_constraintEnd_toStartOf="@id/imageview_CategoryDark"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategoryDark"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginLeft="64dp"
+        app:layout_constraintStart_toEndOf="@id/imageview_CategoryAny"
+        app:layout_constraintTop_toTopOf="@id/imageview_CategoryAny"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategoryMisc"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_CategoryAny"
+        app:layout_constraintEnd_toStartOf="@id/imageview_CategoryProgramming"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategorySpooky"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginTop="64dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageview_CategoryMisc"
+        app:layout_constraintEnd_toStartOf="@id/imageview_CategoryPun"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategoryPun"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginLeft="64dp"
+        app:layout_constraintStart_toEndOf="@id/imageview_CategorySpooky"
+        app:layout_constraintTop_toTopOf="@id/imageview_CategorySpooky"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_CategoryProgramming"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/teal_700"
+        android:layout_marginLeft="64dp"
+        app:layout_constraintStart_toEndOf="@id/imageview_CategoryMisc"
+        app:layout_constraintTop_toTopOf="@id/imageview_CategoryMisc"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
