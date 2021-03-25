@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_favorites"
+        android:id="@+id/navigation_dashboard"
         android:name="com.example.amiajoketoyouu.ui.dashboard.DashboardFragment"
-        android:label="title_dashboard"
+        android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_favorites"
         android:name="com.example.amiajoketoyouu.ui.notifications.NotificationsFragment"
-        android:label="title_notifications"
+        android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

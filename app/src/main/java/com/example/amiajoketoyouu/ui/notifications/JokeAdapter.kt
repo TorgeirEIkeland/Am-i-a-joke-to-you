@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.amiajoketoyouu.R
 
 
-class CustomAdapter(var dataSet: List<String>, val userId: String?) :
+class CustomAdapter(var dataSet: List<String>) :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
 
