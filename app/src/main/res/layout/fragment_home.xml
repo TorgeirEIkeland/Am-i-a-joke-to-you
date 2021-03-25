@@ -180,7 +180,7 @@
             android:layout_height="match_parent"
             android:text="Programming"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="24sp"
             android:textColor="@color/white"/>
 
     </com.google.android.material.card.MaterialCardView>
