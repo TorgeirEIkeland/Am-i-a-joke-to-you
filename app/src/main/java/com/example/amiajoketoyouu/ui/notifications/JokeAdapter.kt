@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.amiajoketoyouu.R
 
 
-class CustomAdapter(var dataSet: List<String>) :
+
+
+
+class CustomAdapter(var dataSet: List<Joke>) :
         RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
 
@@ -36,15 +39,19 @@ class CustomAdapter(var dataSet: List<String>) :
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.textView.text = dataSet[position]
+        viewHolder.textView.text = dataSet[position].joke
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
-    fun updateAdapter(newData: List<String>) {
+    fun updateAdapter(newData: List<Joke>) {
         dataSet = newData
         notifyDataSetChanged()
+    }
+
+    fun addInstance(list: List<Joke>) {
+        updateAdapter(dataSet + list)
     }
 
 }

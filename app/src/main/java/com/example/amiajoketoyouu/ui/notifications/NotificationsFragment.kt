@@ -41,6 +41,6 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
 
-        customAdapter?.updateAdapter(listOf("Hei"))
+        customAdapter?.addInstance(listOf(Joke("Hei"), Joke("Joke2")))
     }
 }
