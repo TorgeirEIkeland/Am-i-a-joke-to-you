@@ -2,7 +2,7 @@
     <string name="app_name">AmIAJoketoYouu</string>
     <string name="title_activity_main2">MainActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_search">Search</string>
+    <string name="title_jokes">Jokes</string>
     <string name="title_favorites">Favorites</string>
     <string name="foo">FOO</string>
 </resources>
