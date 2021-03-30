@@ -65,7 +65,7 @@ class Jokesfragment : Fragment() {
 
         val queue = Volley.newRequestQueue(context)
 
-        jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category), queue) {}
+        jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category, MainActivity().searchString), queue) {}
         setOnClickListeners()
     }
 
@@ -82,7 +82,7 @@ class Jokesfragment : Fragment() {
                 //Log.d("FOO", jokesViewModel.currentJoke.toString())
             } else {
                 val queue = Volley.newRequestQueue(context)
-                jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category), queue){}
+                jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category, MainActivity().searchString), queue){}
             }
         }
     }
