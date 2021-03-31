@@ -48,15 +48,12 @@ class CustomAdapter(var dataSet: List<Joke>) :
         val thisJoke = dataSet[position]
 
 
-        if(thisJoke.joke != null){
+        if(thisJoke.joke != null ){
             viewHolder.textView.text = thisJoke.joke
         }
         else {
             viewHolder.textView.text = thisJoke.setup + "\n" + thisJoke.delivery
         }
-
-        viewHolder.textView.text = dataSet[position].joke
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
