@@ -5,4 +5,5 @@
     <string name="title_jokes">Jokes</string>
     <string name="title_favorites">Favorites</string>
     <string name="foo">FOO</string>
+    <string name="shared_pref_jokes">sharedPrefJokes</string>
 </resources>

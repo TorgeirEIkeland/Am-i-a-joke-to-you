@@ -24,7 +24,6 @@ class JokesViewModel : ViewModel() {
 
         val stringRequest = StringRequest(Request.Method.GET, url,
         { response ->
-            val listType:Type=object:TypeToken<List<Joke?>?>(){}.type
             val joke = Joke.fromJson(response)
             addJoke(joke)
             _currentJoke.value = jokes.size-1
