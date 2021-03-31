@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.amiajoketoyouu.Flags
+import com.example.amiajoketoyouu.Joke
 import com.example.amiajoketoyouu.R
 
 class NotificationsFragment : Fragment() {
@@ -42,7 +44,10 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-
-        customAdapter?.addInstance(listOf(Joke("Hei"), Joke("Joke2")))
+        var savedJokes = listOf(Joke(true, "dark",
+            "twopart", "Dette er en joke",
+        null, null, Flags(false, false, false,false,false,false),
+        123231, false, "Hei"))
+        customAdapter?.updateAdapter(savedJokes)
     }
 }

@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.amiajoketoyouu.Joke
 import com.example.amiajoketoyouu.R
 
 
@@ -43,6 +44,16 @@ class CustomAdapter(var dataSet: List<Joke>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+
+        val thisJoke = dataSet[position]
+
+
+        if(thisJoke.joke != null){
+            viewHolder.textView.text = thisJoke.joke
+        }
+        else {
+            viewHolder.textView.text = thisJoke.setup + "\n" + thisJoke.delivery
+        }
 
         viewHolder.textView.text = dataSet[position].joke
 
