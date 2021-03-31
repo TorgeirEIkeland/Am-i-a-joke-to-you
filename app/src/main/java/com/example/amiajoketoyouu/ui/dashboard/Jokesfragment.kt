@@ -82,7 +82,7 @@ class Jokesfragment : Fragment() {
         val queue = Volley.newRequestQueue(context)
 
         //Make sure we get a joke using the category and search parameters from the main activity
-        jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category, MainActivity().searchString), queue) {}
+        jokesViewModel.getMoreJokes(Joke.urlCreator((activity as MainActivity).category, (activity as? MainActivity)?.searchString), queue) {}
         //Call function to set click listeners
         setOnClickListeners()
     }
@@ -102,7 +102,7 @@ class Jokesfragment : Fragment() {
                 //Log.d("FOO", jokesViewModel.currentJoke.toString())
             } else {
                 val queue = Volley.newRequestQueue(context)
-                jokesViewModel.getMoreJokes(Joke.urlCreator(MainActivity().category, MainActivity().searchString), queue){}
+                jokesViewModel.getMoreJokes(Joke.urlCreator((activity as MainActivity).category, (activity as MainActivity).searchString), queue){}
             }
         }
 
