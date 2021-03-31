@@ -13,7 +13,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.amiajoketoyouu.Joke
+import com.example.amiajoketoyouu.MainActivity
 import com.example.amiajoketoyouu.R
+import com.example.amiajoketoyouu.ui.dashboard.Jokesfragment
 import com.example.amiajoketoyouu.ui.notifications.NotificationsFragment
 
 class HomeFragment : Fragment() {
@@ -55,7 +58,8 @@ class HomeFragment : Fragment() {
         }
     private fun SetonClicklistnerCard () {
         cardviewAny.setOnClickListener {
-
+            MainActivity().category = "any"
+            MainActivity().setFragment(Jokesfragment())
         }
         cardviewDark.setOnClickListener {
 
