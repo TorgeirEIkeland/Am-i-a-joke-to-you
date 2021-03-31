@@ -62,24 +62,25 @@ class HomeFragment : Fragment() {
             (activity as? MainActivity)?.setFragment()
         }
         cardviewDark.setOnClickListener {
-
+            (activity as? MainActivity)?.category = "dark"
+            (activity as? MainActivity)?.setFragment()
             }
         cardviewSpooky.setOnClickListener {
-
+            (activity as? MainActivity)?.category = "spooky"
+            (activity as? MainActivity)?.setFragment()
         }
         cardviewProgramming.setOnClickListener {
-
+            (activity as? MainActivity)?.category = "programming"
+            (activity as? MainActivity)?.setFragment()
         }
         cardviewPun.setOnClickListener {
-
+            (activity as? MainActivity)?.category = "pun"
+            (activity as? MainActivity)?.setFragment()
         }
         cardviewMisc.setOnClickListener {
-
+            (activity as? MainActivity)?.category = "misc"
+            (activity as? MainActivity)?.setFragment()
         }
     }
-
-    private fun navigateToJokePage() {
-    }
-
 
 }
