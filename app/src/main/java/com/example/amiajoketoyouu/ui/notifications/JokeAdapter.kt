@@ -1,18 +1,18 @@
 package com.example.amiajoketoyouu.ui.notifications
 
 import android.content.Intent
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.amiajoketoyouu.Joke
 import com.example.amiajoketoyouu.R
-
-
-
+import com.google.gson.Gson
 
 
 class CustomAdapter(var dataSet: List<Joke>) :
@@ -22,11 +22,13 @@ class CustomAdapter(var dataSet: List<Joke>) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         var textView: TextView
+        var removeButton: ImageButton
 
         init {
             // Define click listener for the ViewHolder's View.
 
             textView = view.findViewById(R.id.joke_textView)
+            removeButton = view.findViewById(R.id.remove_button)
 
 
 
@@ -53,6 +55,12 @@ class CustomAdapter(var dataSet: List<Joke>) :
         }
         else {
             viewHolder.textView.text = thisJoke.setup + "\n" + thisJoke.delivery
+        }
+
+        viewHolder.removeButton.setOnClickListener {
+            var newList: MutableList<Joke> = (dataSet - dataSet[position]) as MutableList<Joke>
+
+            NotificationsFragment().removeJoke(newList)
         }
     }
 

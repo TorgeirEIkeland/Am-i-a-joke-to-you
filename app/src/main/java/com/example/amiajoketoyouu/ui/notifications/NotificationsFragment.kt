@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.amiajoketoyouu.Flags
 import com.example.amiajoketoyouu.Joke
+import com.example.amiajoketoyouu.MainActivity
 import com.example.amiajoketoyouu.R
 import com.google.gson.Gson
 
@@ -49,14 +50,15 @@ class NotificationsFragment : Fragment() {
 
         PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)
 
-        stuff()
+        convertSavedJokes()
     }
 
 
-    fun stuff(){
+    fun convertSavedJokes(){
         val sharedprefs = PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)
         val jokeList = sharedprefs.getStringSet(getString(R.string.shared_pref_jokes), setOf())?.toMutableList()
-
+        val editor = sharedprefs.edit()
+        editor.remove(getString(R.string.shared_pref_jokes))
 
 
         var jokes = mutableListOf<Joke>()
@@ -71,5 +73,24 @@ class NotificationsFragment : Fragment() {
 
         val savedJokes = jokes
         customAdapter?.updateAdapter(savedJokes)
+    }
+
+
+    fun removeJoke(newList: MutableList<Joke>){
+        val sharedprefs = PreferenceManager.getDefaultSharedPreferences((activity as? MainActivity)?.applicationContext)
+        val editor = sharedprefs.edit()
+        val gson = Gson()
+
+        val jokes = mutableListOf<String>()
+
+        for(joke in newList){
+            var jokeJson = gson.toJson(joke)
+            jokes?.add(jokeJson)
+        }
+
+        editor.putStringSet(getString(R.string.shared_pref_jokes), jokes?.toSet())
+
+        editor.commit()
+        convertSavedJokes()
     }
 }
