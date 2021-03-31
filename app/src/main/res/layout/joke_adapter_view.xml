@@ -33,5 +33,7 @@
         android:layout_height="43dp"
         app:layout_constraintEnd_toStartOf="@+id/share_button"
         app:layout_constraintTop_toTopOf="@id/share_button"
-        app:srcCompat="@drawable/ic_baseline_favorite_24" />
+        app:srcCompat="@drawable/ic_baseline_favorite_24"
+        tools:ignore="VectorDrawableCompat"
+        android:tint="@color/red"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

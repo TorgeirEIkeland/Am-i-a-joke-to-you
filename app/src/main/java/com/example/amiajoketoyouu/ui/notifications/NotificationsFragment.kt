@@ -2,6 +2,7 @@ package com.example.amiajoketoyouu.ui.notifications
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.amiajoketoyouu.Flags
 import com.example.amiajoketoyouu.Joke
 import com.example.amiajoketoyouu.R
+import com.google.gson.Gson
 
 class NotificationsFragment : Fragment() {
 
@@ -44,10 +46,30 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        var savedJokes = listOf(Joke(true, "dark",
-            "twopart", "Dette er en joke",
-        null, null, Flags(false, false, false,false,false,false),
-        123231, false, "Hei"))
+
+        PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)
+
+        stuff()
+    }
+
+
+    fun stuff(){
+        val sharedprefs = PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)
+        val jokeList = sharedprefs.getStringSet(getString(R.string.shared_pref_jokes), setOf())?.toMutableList()
+
+
+
+        var jokes = mutableListOf<Joke>()
+
+        if(jokeList != null) {
+            for (joke in jokeList) {
+
+                val currentJoke = Joke.fromJson(joke)
+                jokes.add(currentJoke)
+            }
+        }
+
+        val savedJokes = jokes
         customAdapter?.updateAdapter(savedJokes)
     }
 }
