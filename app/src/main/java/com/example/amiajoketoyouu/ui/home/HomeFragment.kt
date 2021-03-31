@@ -58,8 +58,8 @@ class HomeFragment : Fragment() {
         }
     private fun SetonClicklistnerCard () {
         cardviewAny.setOnClickListener {
-            MainActivity().category = "any"
-            MainActivity().setFragment(Jokesfragment())
+            (activity as? MainActivity)?.category = "any"
+            (activity as? MainActivity)?.setFragment()
         }
         cardviewDark.setOnClickListener {
 

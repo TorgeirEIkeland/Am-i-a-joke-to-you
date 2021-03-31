@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    fun setFragment(fragmentToShow: Fragment){
-        supportFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragmentToShow).commit()
+    fun setFragment(){
+        val navController = findNavController(R.id.nav_host_fragment)
+        navController.navigate(R.id.navigation_jokes)
     }
 
 
