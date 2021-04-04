@@ -1,25 +1,18 @@
 package com.example.amiajoketoyouu.ui.notifications
 
-import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.amiajoketoyouu.Flags
-import com.example.amiajoketoyouu.Joke
-import com.example.amiajoketoyouu.MainActivity
-import com.example.amiajoketoyouu.R
-import com.google.gson.Gson
+import com.example.amiajoketoyouu.*
+import com.example.amiajoketoyouu.Interfaces.IClickListener
 
-class NotificationsFragment : Fragment() {
+class NotificationsFragment : Fragment(), IClickListener {
 
     private lateinit var notificationsViewModel: NotificationsViewModel
     var customAdapter: CustomAdapter? = null
@@ -39,7 +32,7 @@ class NotificationsFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        customAdapter = CustomAdapter(listOf())
+        customAdapter = CustomAdapter(listOf(), this)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = customAdapter
     }
@@ -75,22 +68,12 @@ class NotificationsFragment : Fragment() {
         customAdapter?.updateAdapter(savedJokes)
     }
 
-
-    fun removeJoke(newList: MutableList<Joke>){
-        val sharedprefs = PreferenceManager.getDefaultSharedPreferences((activity as? MainActivity)?.applicationContext)
-        val editor = sharedprefs.edit()
-        val gson = Gson()
-
-        val jokes = mutableListOf<String>()
-
-        for(joke in newList){
-            var jokeJson = gson.toJson(joke)
-            jokes?.add(jokeJson)
-        }
-
-        editor.putStringSet(getString(R.string.shared_pref_jokes), jokes?.toSet())
-
-        editor.commit()
+    fun remove2(thisJoke: Joke){
+        (activity as MainActivity).saveOrDeleteJoke(thisJoke, SaveOrDelete.DELETE)
         convertSavedJokes()
+    }
+
+    override fun deleteFavorite(joke: Joke) {
+        remove2(joke)
     }
 }
