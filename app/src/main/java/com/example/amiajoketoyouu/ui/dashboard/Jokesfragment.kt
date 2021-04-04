@@ -33,7 +33,6 @@ class Jokesfragment : Fragment() {
     private lateinit var nextButton:Button
 
     private lateinit var favoriteButton: ImageButton
-    private lateinit var shareButton: ImageButton
 
     //Create the fragment view
     override fun onCreateView(
@@ -55,7 +54,6 @@ class Jokesfragment : Fragment() {
         nextButton = root.findViewById(R.id.button_next)
 
         favoriteButton = root.findViewById(R.id.favorite_button)
-        shareButton = root.findViewById(R.id.share_button)
 
         //Observe the current joke and jokes live data from the view model
         jokesViewModel.currentJoke.observe(viewLifecycleOwner, Observer { currentJoke ->

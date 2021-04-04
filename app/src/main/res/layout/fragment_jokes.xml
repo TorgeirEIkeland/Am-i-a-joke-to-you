@@ -32,19 +32,10 @@
         android:id="@+id/favorite_button"
         android:layout_width="48dp"
         android:layout_height="43dp"
-        app:layout_constraintEnd_toStartOf="@id/share_button"
-        app:layout_constraintTop_toTopOf="@id/share_button"
+        app:layout_constraintEnd_toEndOf="@+id/joke_delivery"
+        app:layout_constraintTop_toBottomOf="@+id/joke_delivery"
         app:srcCompat="@drawable/ic_baseline_favorite_24"
         tools:ignore="VectorDrawableCompat" />
-
-    <ImageButton
-        android:id="@+id/share_button"
-        android:layout_width="48dp"
-        android:layout_height="43dp"
-        app:layout_constraintEnd_toEndOf="@id/joke_delivery"
-        app:layout_constraintTop_toBottomOf="@+id/joke_delivery"
-        app:srcCompat="@android:drawable/ic_menu_share" />
-
 
 
     <Button
