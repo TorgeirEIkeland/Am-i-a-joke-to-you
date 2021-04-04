@@ -21,7 +21,7 @@ class Joke(
     companion object{
         public fun fromJson(jsonString:String) = gson.fromJson(jsonString, Joke::class.java)
 
-        public fun urlCreator(category: String, searchParameter:String?):String{
+        public fun urlCreator(category: String):String{
             return "https://v2.jokeapi.dev/joke/${category.toLowerCase().capitalize()}"
         }
     }
