@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -58,29 +60,29 @@ class HomeFragment : Fragment() {
         }
     private fun SetonClicklistnerCard () {
         cardviewAny.setOnClickListener {
-            (activity as? MainActivity)?.category = "any"
-            (activity as? MainActivity)?.setFragment()
+            setCategoryAndGoToJokeFragment("any")
         }
         cardviewDark.setOnClickListener {
-            (activity as? MainActivity)?.category = "dark"
-            (activity as? MainActivity)?.setFragment()
-            }
+            setCategoryAndGoToJokeFragment("dark")
+        }
         cardviewSpooky.setOnClickListener {
-            (activity as? MainActivity)?.category = "spooky"
-            (activity as? MainActivity)?.setFragment()
+            setCategoryAndGoToJokeFragment("spooky")
         }
         cardviewProgramming.setOnClickListener {
-            (activity as? MainActivity)?.category = "programming"
-            (activity as? MainActivity)?.setFragment()
+            setCategoryAndGoToJokeFragment("programming")
         }
         cardviewPun.setOnClickListener {
-            (activity as? MainActivity)?.category = "pun"
-            (activity as? MainActivity)?.setFragment()
+            setCategoryAndGoToJokeFragment("pun")
         }
         cardviewMisc.setOnClickListener {
-            (activity as? MainActivity)?.category = "misc"
-            (activity as? MainActivity)?.setFragment()
+            setCategoryAndGoToJokeFragment("misc")
         }
+    }
+
+    fun setCategoryAndGoToJokeFragment(category:String){
+        (activity as? MainActivity)?.category = category
+        (activity as? MainActivity)?.setFragment()
+
     }
 
 }

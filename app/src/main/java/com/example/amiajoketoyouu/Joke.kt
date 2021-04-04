@@ -22,9 +22,7 @@ class Joke(
         public fun fromJson(jsonString:String) = gson.fromJson(jsonString, Joke::class.java)
 
         public fun urlCreator(category: String, searchParameter:String?):String{
-            //Log.d("FOO", "https://v2.jokeapi.dev/joke/${category.toLowerCase().capitalize()}")
-            return if(searchParameter != null) "https://v2.jokeapi.dev/joke/${category.toLowerCase().capitalize()}?$searchParameter"
-            else "https://v2.jokeapi.dev/joke/${category.toLowerCase().capitalize()}"
+            return "https://v2.jokeapi.dev/joke/${category.toLowerCase().capitalize()}"
         }
     }
 

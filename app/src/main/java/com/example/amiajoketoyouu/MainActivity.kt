@@ -16,7 +16,6 @@ import com.google.gson.Gson
 class MainActivity : AppCompatActivity() {
 
     var category = "Any"
-    var searchString:String? = null
 
     val gson = Gson()
 
