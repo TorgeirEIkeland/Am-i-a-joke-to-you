@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,7 @@ import com.android.volley.toolbox.Volley
 import com.example.amiajoketoyouu.Joke
 import com.example.amiajoketoyouu.MainActivity
 import com.example.amiajoketoyouu.R
+import com.example.amiajoketoyouu.SaveOrDelete
 import com.google.gson.Gson
 
 class Jokesfragment : Fragment() {
@@ -58,6 +60,9 @@ class Jokesfragment : Fragment() {
         //Observe the current joke and jokes live data from the view model
         jokesViewModel.currentJoke.observe(viewLifecycleOwner, Observer { currentJoke ->
             jokesViewModel.jokesLiveData.observe(viewLifecycleOwner, Observer { jokes ->
+
+                if((activity as MainActivity).jokeIsSaved(jokes[currentJoke])) favoriteButton.setColorFilter(resources.getColor(R.color.red))
+                else favoriteButton.setColorFilter(resources.getColor(R.color.white))
 
                 //Check if the current joke contains a joke or setup and delivery
                 jokes[currentJoke].joke?.let{ joke ->
@@ -107,20 +112,22 @@ class Jokesfragment : Fragment() {
         }
 
         //Save the current joke to shared preferences
-        favoriteButton.setOnClickListener(){
+        favoriteButton.setOnClickListener{
 
-            val sharedprefs = PreferenceManager.getDefaultSharedPreferences(requireActivity().applicationContext)
-            val editor = sharedprefs.edit()
-            val gson = Gson()
-
-            val jokes = sharedprefs.getStringSet(getString(R.string.shared_pref_jokes), setOf())?.toMutableList()
-
-            if(jokesViewModel.currentJoke.value != null){
-                val jokeJson = gson.toJson(jokesViewModel.jokes[jokesViewModel.currentJoke.value!!])
-                jokes?.add(jokeJson)
+            jokesViewModel.currentJoke.value?.let{
+                val joke = jokesViewModel.jokes[it]
+                //Log.d("FOO", "Joke is saved: ${(activity as MainActivity).jokeIsSaved(joke)}")
+                if((activity as MainActivity).jokeIsSaved(joke)){
+                    (activity as MainActivity).saveOrDeleteJoke(joke, SaveOrDelete.DELETE)
+                    favoriteButton.setColorFilter(resources.getColor(R.color.white))
+                    Toast.makeText(context,"Deleted joke from phone", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    (activity as MainActivity).saveOrDeleteJoke(joke, SaveOrDelete.SAVE)
+                    favoriteButton.setColorFilter(resources.getColor(R.color.red))
+                    Toast.makeText(context,"Saved joke to phone", Toast.LENGTH_SHORT).show()
+                }
             }
-            editor.putStringSet(getString(R.string.shared_pref_jokes), jokes?.toSet())
-            editor.commit()
         }
     }
 }
